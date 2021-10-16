@@ -4,7 +4,7 @@
 ## Development
 - Developed using Test Driven Development approach. The testing is automated using TravisCI ([travis-ci](https://travis-ci.com/)) and Github Actions
 - The backend is developed using FastAPI([fastapi](https://fastapi.tiangolo.com/))
-- The frontend uses flutter and dart.
+- The design of this application 
 
 ## Docker Setup
 - First install docker desktop from [docker-home](https://www.docker.com/get-started)
@@ -12,23 +12,18 @@
 - Add the git repository to remote 
 				`git remote add origin <code-url>`
 - Pull code from the remote origin `git pull origin main`
+- Pull the image from docker hub using the following tag
+- - abhijithganesh/sahaay
 - Setup docker `docker-compose build`
-- Run django command on docker image using the syntax 
-`docker-compose run --rm app sh -c "<your piece of code>"`
-ex:
-`docker-compose run --rm app sh -c "pytest"`
 
-To test a particular file (`test_user.py`), use 
-`docker-compose run --rm app sh -c "pytest tests\test_user.py"`
-
-To setup the live test server, run `docker-compose up -d` after building the docker image. The live image will then be hosted at `https://localhost:3000`. The api could be tested using the FastAPI testing interface provided at `https://localhost:3000/docs`.
+To setup the live test server, run `docker-compose up -d` after building the docker image. The live image will then be hosted at `https://localhost:3000`. The api could be tested using the FastAPI testing interface provided at `https://localhost:8000/redoc`.
 
 ## Contributing
 - If you want to use/install any library don't use pip install directly. Add the said library to `requirements.txt`.
 	- Add the library in the format: 
 	- `'library name'>='used version',<'version rounded to first decimal '` 
 	- ex: `djangorestframework>=3.12.4,<3.13.0`
-- We will have a main `djangoapp` which will contain all user models.
+- We will have a main `Core` which will contain all user models.
 - For any functions/models, implement tests first in `.\tests\`.
 - Use proper headers and prefixes for commits and Pull Requests
 	- `[tests]` for testing changes

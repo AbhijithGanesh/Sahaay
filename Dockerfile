@@ -16,6 +16,5 @@ COPY /design /design
 COPY /Core /Core
 COPY nginx/nginx.conf /etc/nginx/
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x  /entrypoint.sh
 
 EXPOSE 8080

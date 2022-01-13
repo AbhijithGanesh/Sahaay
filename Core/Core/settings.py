@@ -94,44 +94,49 @@ DATABASES = {
     }
 }
 
-#Postgres --> Distinct Sqlite
+# Postgres --> Distinct Sqlite
 
 
 if MOUNT_DATABASE != True:
-    DATABASES.update({
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "Database/db.sqlite3",
+    DATABASES.update(
+        {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": BASE_DIR / "Database/db.sqlite3",
+            }
         }
-    })
+    )
 if PSQL == True:
-    DATABASES.update({
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.environ.get("POSTGRES_DB"),
-            "USER": os.environ.get("POSTGRES_USER"),
-            "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-            "HOST": os.environ.get("POSTGRES_HOST"),
-            "PORT": 5432,
+    DATABASES.update(
+        {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql",
+                "NAME": os.environ.get("POSTGRES_DB"),
+                "USER": os.environ.get("POSTGRES_USER"),
+                "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+                "HOST": os.environ.get("POSTGRES_HOST"),
+                "PORT": 5432,
+            }
         }
-    })
+    )
 
 if CACHING_AND_BACKUP:
-    DATABASES.update({
-        "cassandra": {
-            "ENGINE": "django_cassandra_engine",
-            "NAME": "test",
-            "TEST_NAME": "djassandra",
-            "USER": "cassandra",
-            "PASSWORD": "cassandra",
-            "HOST": "localhost",
-            "PORT": "9042",
-            "OPTIONS": {
-                "replication": {
-                    "strategy_class": "SimpleStrategy",
-                    "replication_factor": 1,
-                }
-            },
+    DATABASES.update(
+        {
+            "cassandra": {
+                "ENGINE": "django_cassandra_engine",
+                "NAME": "test",
+                "TEST_NAME": "djassandra",
+                "USER": "cassandra",
+                "PASSWORD": "cassandra",
+                "HOST": "localhost",
+                "PORT": "9042",
+                "OPTIONS": {
+                    "replication": {
+                        "strategy_class": "SimpleStrategy",
+                        "replication_factor": 1,
+                    }
+                },
+            }
         }
-    })
-
+    )

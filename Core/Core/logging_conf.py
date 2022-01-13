@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class LogConfig(BaseModel):
     LOGGER_NAME: str = "sahaay_app"
     LOG_FORMAT: str = "%(levelprefix)s | %(asctime)s | %(message)s "

@@ -43,3 +43,12 @@ def edit_comment(comments: editComments, request: Request, id: str):
     except Exception:
         return {HTTP_404_NOT_FOUND:"Image not added"}
 
+@comments.delete("/delete-comment")
+def delete_comment(comments: editComments, request: Request, id: str):
+    from Logic.models import CommentsTable
+    try:
+        instance = CommentsTable.objects.get(uniqueID = id)
+        instance.delete()
+        return  {HTTP_202_ACCEPTED : f"{id} was deleted"}
+    except Exception:
+        return {HTTP_404_NOT_FOUND:"Instance not found"}
